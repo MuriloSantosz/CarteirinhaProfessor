@@ -22,5 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CarteirinhaProfessor"
+rootProject.name = "CarteirinhaProfesor"
 include(":app")
+ 
