@@ -4,11 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
 import com.aula.carteirinhaprofessor.app.di.AppContainer
 import com.aula.carteirinhaprofessor.app.navigation.AppNavHost
-import com.aula.carteirinhaprofessor.core.designsystem.theme.CarteirinhaDigital2DEVEST_BTheme
+import com.aula.carteirinhaprofessor.core.designsystem.theme.CarteirinhaProfessorTheme
 
 @Composable
 fun App(container: AppContainer) {
-    CarteirinhaDigital2DEVEST_BTheme() {
+    CarteirinhaProfessorTheme() {
         val navController = rememberNavController()
         AppNavHost(
             navController = navController,

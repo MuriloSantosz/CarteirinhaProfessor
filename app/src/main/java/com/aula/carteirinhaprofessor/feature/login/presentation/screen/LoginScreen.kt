@@ -106,7 +106,7 @@ fun LoginScreen(
             shape = RoundedCornerShape(size = 4.dp),
             border = BorderStroke(
                 width = 2.dp,
-                color = Color.White
+                color = Color.Black
             ),
             colors = ButtonDefaults.buttonColors(
                 contentColor = MaterialTheme.colorScheme.secondary
@@ -119,13 +119,13 @@ fun LoginScreen(
                     modifier = Modifier
                         .fillMaxWidth(0.60f)
                         .height(5.dp),
-                    color = Color.Black,
-                    trackColor = Color.Black.copy(alpha = 0.35f)
+                    color = Color.White,
+                    trackColor = Color.White.copy(alpha = 0.35f)
                 )
             }else {
                 Text(
                     text = "Entrar",
-                    color = Color.Black
+                    color = Color.White
                 )
             }
         }
