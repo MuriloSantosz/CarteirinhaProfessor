@@ -66,8 +66,8 @@ fun UnidadeCurricularCardPreview() {
         unidadeCurricular = UnidadeCurricular(
             id = "1",
             nome = "Matemática",
-            professor = "Dr. Silva",
-            nota1 = 8.5,
+            professor = "Marcelo",
+            nota1 = 6.5,
             nota2 = 7.0,
             media = 7.75,
             faltas = 2
