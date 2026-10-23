@@ -1,4 +1,4 @@
-package com.aula.carteirinhaprofessor.feature.aluno.presetantion.component
+package com.aula.carteirinhaprofessor.feature.aluno.carteirinha.presentation.component
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
