@@ -1,4 +1,4 @@
-package com.aula.carteirinhaprofessor.feature.carteirinha.presetantion.component
+package com.aula.carteirinhaprofessor.feature.aluno.presetantion.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

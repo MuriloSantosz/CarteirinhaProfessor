@@ -1,4 +1,4 @@
-package com.aula.carteirinhaprofessor.feature.carteirinha.presetantion.screen
+package com.aula.carteirinhaprofessor.feature.aluno.presetantion.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.aula.carteirinhaprofessor.feature.carteirinha.presetantion.component.PerfilAluno
-import com.aula.carteirinhaprofessor.feature.carteirinha.presetantion.component.QrCode
+import com.aula.carteirinhaprofessor.feature.aluno.presetantion.component.PerfilAluno
+import com.aula.carteirinhaprofessor.feature.aluno.presetantion.component.QrCode
 import com.aula.carteirinhaprofessor.R.drawable.fundohome
 import com.aula.carteirinhaprofessor.R.drawable.senai
 

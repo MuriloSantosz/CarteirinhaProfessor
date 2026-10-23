@@ -15,7 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.aula.carteirinhaprofessor.app.di.AppContainer
 import com.aula.carteirinhaprofessor.app.session.SessionViewModel
-import com.aula.carteirinhaprofessor.feature.carteirinha.presetantion.screen.CarteirinhaScreen
+import com.aula.carteirinhaprofessor.feature.aluno.presetantion.screen.CarteirinhaScreen
 import com.aula.carteirinhaprofessor.feature.home_aluno.presentation.screen.HomeScreen
 import com.aula.carteirinhaprofessor.feature.login.presentation.screen.LoginScreen
 import com.aula.carteirinhaprofessor.feature.unidadecurriculares.presentation.UnidadeCurricularViewModel
