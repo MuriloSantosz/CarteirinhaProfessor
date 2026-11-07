@@ -1,7 +1,5 @@
 package com.aula.carteirinhaprofessor.app.navigation.aluno
 
-
-
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.remember
@@ -11,7 +9,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.aula.carteirinhaprofessor.app.navigation.GraphRoutes
+import com.aula.carteirinhaprofessor.app.navigation.GraphRoutes.ALUNO
 import com.aula.carteirinhaprofessor.app.navigation.ProfileGuard
 import com.aula.carteirinhaprofessor.app.ui.AppShell
 import com.aula.carteirinhaprofessor.feature.aluno.carteirinha.presentation.screen.CarteirinhaScreen
@@ -22,8 +20,10 @@ import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.domain.r
 import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.UnidadeCurricularViewModel
 import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.factory.UnidadeCurricularViewModelFactory
 import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.screen.UnidadeCurricularScreen
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.domain.repository.UnidadeCurricularRepository
 import kotlinx.coroutines.flow.StateFlow
+import com.aula.carteirinhaprofessor.app.navigation.aluno.AlunoRoutes.CARTEIRINHA
+import com.aula.carteirinhaprofessor.app.navigation.aluno.AlunoRoutes.HOME
+import com.aula.carteirinhaprofessor.app.navigation.aluno.AlunoRoutes.UNIDADES_CURRICULARES
 
 fun NavGraphBuilder.alunoNavGraph(
     navController: NavHostController,
@@ -36,11 +36,11 @@ fun NavGraphBuilder.alunoNavGraph(
     onPerfilInvalido: (PerfilAcesso) -> Unit
 ) {
     navigation(
-        startDestination = AlunoRoutes.HOME,
-        route = GraphRoutes.ALUNO
+        startDestination = HOME,
+        route = ALUNO
     ) {
         composable(
-            route = AlunoRoutes.HOME
+            route = HOME
         ) {
             ProfileGuard(
                 usuarioFlow = usuarioLogadoFlow,
@@ -61,10 +61,10 @@ fun NavGraphBuilder.alunoNavGraph(
                     HomeAlunoScreen(
                         usuarioLogado = usuario,
                         onCarteirinhaClick = {
-                            navController.navigate(AlunoRoutes.CARTEIRINHA)
+                            navController.navigate(CARTEIRINHA)
                         },
                         onUnidadesCurricularesClick = {
-                            navController.navigate(AlunoRoutes.UNIDADES_CURRICULARES)
+                            navController.navigate(UNIDADES_CURRICULARES)
                         },
                         modifier = Modifier
                             .fillMaxSize()
@@ -74,7 +74,7 @@ fun NavGraphBuilder.alunoNavGraph(
             }
         }
 
-        composable(route = AlunoRoutes.CARTEIRINHA) {
+        composable(route = CARTEIRINHA) {
 
             ProfileGuard(
                 usuarioFlow = usuarioLogadoFlow,
@@ -104,7 +104,7 @@ fun NavGraphBuilder.alunoNavGraph(
             }
         }
 
-        composable(route = AlunoRoutes.UNIDADES_CURRICULARES) {
+        composable(route = UNIDADES_CURRICULARES) {
 
             ProfileGuard(
                 usuarioFlow = usuarioLogadoFlow,

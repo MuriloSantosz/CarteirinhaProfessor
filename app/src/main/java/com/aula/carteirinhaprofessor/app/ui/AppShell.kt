@@ -1,10 +1,7 @@
 package com.aula.carteirinhaprofessor.app.ui
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -79,8 +76,8 @@ fun AppShell(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.login),
-                        contentDescription = "Avatar do usuário",
+                        painter = painterResource(id = R.drawable.sagui2),
+                        contentDescription = "foto de perfil",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(96.dp)
@@ -95,7 +92,7 @@ fun AppShell(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Text(
-                        text = usuarioLogado.nome,
+                        text = "Murilo Santos",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )

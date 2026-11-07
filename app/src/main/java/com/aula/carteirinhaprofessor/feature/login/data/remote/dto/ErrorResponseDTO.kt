@@ -1,4 +1,5 @@
 package com.aula.carteirinhaprofessor.feature.login.data.remote.dto
+
 import kotlinx.serialization.Serializable
 
 @Serializable

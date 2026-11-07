@@ -1,14 +1,11 @@
 package com.aula.carteirinhaprofessor.app.navigation.auth
 
-
-
 import androidx.compose.runtime.remember
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.aula.carteirinhaprofessor.app.navigation.GraphRoutes
-import com.aula.carteirinhaprofessor.feature.login.data.repository.LoginRepository
 import com.aula.carteirinhaprofessor.feature.login.domain.model.UsuarioLogado
 import com.aula.carteirinhaprofessor.feature.login.domain.repository.LoginRepository
 import com.aula.carteirinhaprofessor.feature.login.presentation.LoginViewModel

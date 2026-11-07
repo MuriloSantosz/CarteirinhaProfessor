@@ -8,8 +8,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.navigation.compose.rememberNavController
 import com.aula.carteirinhaprofessor.app.di.AppContainer
+
 import com.aula.carteirinhaprofessor.app.navigation.AppNavHost
-import com.aula.carteirinhaprofessor.core.designsystem.theme.CarteirinhaProfessorTheme
+import com.aula.carteirinhaprofessor.core.designsystem.theme.CarteirinhaDigital2DEVESTTheme
 
 @Composable
 fun App(container: AppContainer) {
@@ -17,14 +18,17 @@ fun App(container: AppContainer) {
     val systemDarkTheme = isSystemInDarkTheme()
     var darkTheme by rememberSaveable { mutableStateOf(systemDarkTheme) }
 
-    CarteirinhaProfessorTheme(
+    CarteirinhaDigital2DEVESTTheme(
         darkTheme = darkTheme
     ) {
         val navController = rememberNavController()
 
         AppNavHost(
             navController = navController,
+            darkTheme = darkTheme,
+            onDarkThemeChange = { darkTheme = it },
             container = container
         )
+
     }
 }

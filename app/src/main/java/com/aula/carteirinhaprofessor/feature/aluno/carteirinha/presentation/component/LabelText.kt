@@ -1,9 +1,10 @@
 package com.aula.carteirinhaprofessor.feature.aluno.carteirinha.presentation.component
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 
@@ -14,9 +15,10 @@ fun LabelText(
 ) {
     Text(
         text = text,
-        fontSize = 20.sp,
-        color = Color.Black,
-        textAlign = TextAlign.Right,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
+        color = MaterialTheme.colorScheme.primary,
+        textAlign = TextAlign.Center,
         modifier = modifier
     )
 }

@@ -1,14 +1,22 @@
 package com.aula.carteirinhaprofessor.feature.aluno.carteirinha.presentation.component
 
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.Modifier
-import androidx.core.graphics.set
-import androidx.core.graphics.createBitmap
-
 import android.graphics.Bitmap
 import android.graphics.Color
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.Color as ComposeColor
+import androidx.compose.ui.unit.dp
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.set
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
@@ -20,20 +28,26 @@ fun QrCode(
 ) {
     val bitmap = gerarQrCode(conteudo)
 
-    Image(
-        bitmap = bitmap.asImageBitmap(),
-        contentDescription = "QR Code",
+    Box(
+        contentAlignment = Alignment.Center,
         modifier = modifier
-    )
+            .clip(RoundedCornerShape(12.dp))
+            .background(ComposeColor.White)
+            .padding(12.dp)
+    ) {
+        Image(
+            bitmap = bitmap.asImageBitmap(),
+            contentDescription = "QR Code",
+            modifier = Modifier.size(180.dp)
+        )
+    }
 }
-
 
 fun gerarQrCode(
     conteudo: String,
     tamanho: Int = 512,
     margem: Int = 1
 ): Bitmap {
-
     val hints = mapOf(
         EncodeHintType.MARGIN to margem
     )

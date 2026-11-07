@@ -1,106 +1,124 @@
 package com.aula.carteirinhaprofessor.app.navigation
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.aula.carteirinhaprofessor.app.di.AppContainer
+import com.aula.carteirinhaprofessor.app.navigation.aluno.alunoNavGraph
+import com.aula.carteirinhaprofessor.app.navigation.auth.authNavGraph
+import com.aula.carteirinhaprofessor.app.navigation.professor.professorNavGraph
 import com.aula.carteirinhaprofessor.app.session.SessionViewModel
-import com.aula.carteirinhaprofessor.feature.aluno.presetantion.screen.CarteirinhaScreen
-import com.aula.carteirinhaprofessor.feature.home_aluno.presentation.screen.HomeScreen
-import com.aula.carteirinhaprofessor.feature.login.presentation.screen.LoginScreen
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.presentation.UnidadeCurricularViewModel
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.presentation.factory.UnidadeCurricularViewModelFactory
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.presentation.screen.UnidadeCurricularScreen
+import com.aula.carteirinhaprofessor.app.session.SessionViewModelFactory
+import com.aula.carteirinhaprofessor.feature.login.domain.model.PerfilAcesso
 
 @Composable
 fun AppNavHost(
     navController: NavHostController,
-    sessionViewModel: SessionViewModel = viewModel(),
-    container: AppContainer,
+    darkTheme: Boolean,
+    onDarkThemeChange: (Boolean) -> Unit,
+    container: AppContainer
 ) {
-    val usuarioLogado by sessionViewModel.usuarioLogado.collectAsStateWithLifecycle()
-    val usuario = usuarioLogado
+
+    val sessionFactory = remember(container.sessionTokenStore) {
+        SessionViewModelFactory(
+            sessionTokenStore = container.sessionTokenStore
+        )
+    }
+
+    val sessionViewModel: SessionViewModel = viewModel(
+        factory = sessionFactory
+    )
+
+    fun graphFor(perfil: PerfilAcesso): String {
+        return when (perfil) {
+            PerfilAcesso.ALUNO -> GraphRoutes.ALUNO
+            PerfilAcesso.PROFESSOR -> GraphRoutes.PROFESSOR
+        }
+    }
+
+    fun replaceGraph(
+        currentGraph: String,
+        destinationGraph: String
+    ) {
+
+        navController.navigate(destinationGraph) {
+            popUpTo(currentGraph) {
+                inclusive = true
+            }
+            launchSingleTop = true
+        }
+    }
 
     NavHost(
         navController = navController,
-        startDestination = Routes.Login.route
+        startDestination = GraphRoutes.AUTH
     ) {
-        composable(Routes.Login.route) {
-
-            LoginScreen(
-                navController = navController,
-                onLoginSucesso = { usuario ->
-                    container.authTokenStore.setToken(usuario.token)
-                    sessionViewModel.setUsuarioLogado(usuario)
-                    navController.navigate(Routes.HomeAluno.route)
-                }
-            )
-        }
-
-        composable(Routes.Carteirinha.route) {
-            Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
-                CarteirinhaScreen(
-                    modifier = Modifier.padding(innerPadding)
+        authNavGraph(
+            loginRepository = container.loginRepository,
+            onLoginSucesso = { usuario ->
+                sessionViewModel.setUsuarioLogado(usuario)
+                replaceGraph(
+                    currentGraph = GraphRoutes.AUTH,
+                    destinationGraph = graphFor(usuario.perfil)
                 )
             }
-        }
+        )
 
-        composable(Routes.HomeAluno.route) {
-
-            if (usuario == null) {
-                LaunchedEffect(Unit) {
-                    navController.navigate(Routes.Login.route)
-                }
-            } else {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
-                        navController = navController,
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
-
-        composable(Routes.UCAluno.route) {
-
-            if (usuario == null) {
-                LaunchedEffect(Unit) {
-                    navController.navigate(Routes.Login.route)
-                }
-
-            } else {
-                val unidadeCurricularFactory = remember(
-                    container.unidadeCurricularRepository
-                ) {
-                    UnidadeCurricularViewModelFactory(
-                        repository = container.unidadeCurricularRepository
-                    )
-                }
-
-                val unidadeCurricularViewModel: UnidadeCurricularViewModel = viewModel(
-                    factory = unidadeCurricularFactory
+        alunoNavGraph(
+            navController = navController,
+            usuarioLogadoFlow = sessionViewModel.usuarioLogado,
+            unidadeCurricularRepository = container.unidadeCurricularRepository,
+            darkTheme = darkTheme,
+            onDarkThemeChange = onDarkThemeChange,
+            onLogout = {
+                sessionViewModel.limparSessao()
+                replaceGraph(
+                    currentGraph = GraphRoutes.ALUNO,
+                    destinationGraph = GraphRoutes.AUTH
                 )
-                Scaffold(
-                    modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
-
-                    UnidadeCurricularScreen(
-                        modifier =Modifier.padding(innerPadding),
-                        viewModel =unidadeCurricularViewModel
-                    )
-                }
+            },
+            onSessaoAusente = {
+                replaceGraph(
+                    currentGraph = GraphRoutes.ALUNO,
+                    destinationGraph = GraphRoutes.AUTH
+                )
+            },
+            onPerfilInvalido = { perfil ->
+                replaceGraph(
+                    currentGraph = GraphRoutes.ALUNO,
+                    destinationGraph = graphFor(perfil)
+                )
             }
-        }
+        )
+
+        professorNavGraph(
+            navController = navController,
+            usuarioLogadoFlow = sessionViewModel.usuarioLogado,
+            turmaRepository = container.turmaRepository,
+            unidadeCurricularProfessorRepository = container.unidadeCurricularProfessorRepository,
+            darkTheme = darkTheme,
+            onDarkThemeChange = onDarkThemeChange,
+            onLogout = {
+                sessionViewModel.limparSessao()
+                replaceGraph(
+                    currentGraph = GraphRoutes.PROFESSOR,
+                    destinationGraph = GraphRoutes.AUTH
+                )
+            },
+            onSessaoAusente = {
+                replaceGraph(
+                    currentGraph = GraphRoutes.PROFESSOR,
+                    destinationGraph = GraphRoutes.AUTH
+                )
+            },
+            onPerfilInvalido = { perfil ->
+                replaceGraph(
+                    currentGraph = GraphRoutes.PROFESSOR,
+                    destinationGraph = graphFor(perfil)
+                )
+            }
+        )
     }
 }

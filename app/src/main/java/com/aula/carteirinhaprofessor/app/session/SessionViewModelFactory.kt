@@ -11,7 +11,9 @@ class SessionViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SessionViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return SessionViewModel(sessionTokenStore = sessionTokenStore) as T
+            return SessionViewModel(
+                sessionTokenStore = sessionTokenStore
+            ) as T
         }
         throw IllegalArgumentException("ViewModel desconhecido: ${modelClass.name}")
     }

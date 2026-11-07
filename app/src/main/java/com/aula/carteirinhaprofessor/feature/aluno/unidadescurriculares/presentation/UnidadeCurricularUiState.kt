@@ -1,6 +1,6 @@
 package com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation
 
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.domain.model.UnidadeCurricular
+import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.domain.model.UnidadeCurricular
 
 data class UnidadeCurricularUiState(
     val isLoading: Boolean = false,

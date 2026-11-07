@@ -1,5 +1,6 @@
 package com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.component
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,9 +13,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.domain.model.UnidadeCurricular
+import androidx.compose.ui.unit.sp
+import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.domain.model.UnidadeCurricular
 
 @Composable
 fun UnidadeCurricularCard(
@@ -22,11 +25,13 @@ fun UnidadeCurricularCard(
     unidadeCurricular: UnidadeCurricular
 ) {
     Card(
-        shape = RoundedCornerShape(16.dp),
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(1.5.dp, MaterialTheme.colorScheme.primary),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
             modifier = Modifier
@@ -35,28 +40,42 @@ fun UnidadeCurricularCard(
         ) {
             Text(
                 text = unidadeCurricular.nome,
-                style = MaterialTheme.typography.titleLarge
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
             )
             Text(
                 text = "Professor: ${unidadeCurricular.professor}",
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "N1: ${unidadeCurricular.nota1}")
-                Text(text = "N2: ${unidadeCurricular.nota2}")
-                Text(text = "Média: ${unidadeCurricular.media}")
+                Text(
+                    text = "N1: ${unidadeCurricular.nota1}",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(
+                    text = "N2: ${unidadeCurricular.nota2}",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(
+                    text = "Média: ${unidadeCurricular.media}",
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
             Text(
                 text = "Faltas: ${unidadeCurricular.faltas}",
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.primary
             )
         }
     }
 }
+
 @Preview(
     showBackground = true
 )
@@ -65,11 +84,11 @@ fun UnidadeCurricularCardPreview() {
     UnidadeCurricularCard(
         unidadeCurricular = UnidadeCurricular(
             id = "1",
-            nome = "Matemática",
-            professor = "Dr. Silva",
+            nome = "Programação Mobile",
+            professor = "Ana Souza",
             nota1 = 8.5,
-            nota2 = 7.0,
-            media = 7.75,
+            nota2 = 9.0,
+            media = 8.75,
             faltas = 2
         )
     )

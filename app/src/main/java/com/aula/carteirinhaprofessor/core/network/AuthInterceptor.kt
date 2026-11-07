@@ -18,10 +18,10 @@ class AuthInterceptor(
         }
 
         val requestAutenticada = requestOriginal.newBuilder()
-            .header(
-                "Authorization",
-                "Bearer $token"
-            ).build()
+                .header(
+                    "Authorization",
+                    "Bearer $token"
+                ).build()
 
         return chain.proceed(requestAutenticada)
     }

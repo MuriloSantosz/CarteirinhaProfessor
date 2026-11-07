@@ -2,11 +2,11 @@ package com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.present
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.domain.repository.UnidadeCurricularRepository
 import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.UnidadeCurricularViewModel
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.domain.repository.UnidadeCurricularRepository
 
 class UnidadeCurricularViewModelFactory(
-    private val repository: UnidadeCurricularRepository
+    private val repository:UnidadeCurricularRepository
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

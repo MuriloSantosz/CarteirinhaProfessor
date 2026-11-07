@@ -2,7 +2,7 @@ package com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.present
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aula.carteirinhaprofessor.feature.unidadecurriculares.domain.repository.UnidadeCurricularRepository
+import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.domain.repository.UnidadeCurricularRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
