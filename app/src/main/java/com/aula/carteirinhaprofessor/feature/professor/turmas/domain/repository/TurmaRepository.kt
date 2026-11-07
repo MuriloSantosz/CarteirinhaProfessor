@@ -1,0 +1,7 @@
+package com.aula.carteirinhaprofessor.feature.professor.turmas.domain.repository
+
+import com.aula.carteirinhaprofessor.feature.professor.turmas.domain.model.Turma
+
+interface TurmaRepository {
+    suspend fun listar(): Result<List<Turma>>
+}
