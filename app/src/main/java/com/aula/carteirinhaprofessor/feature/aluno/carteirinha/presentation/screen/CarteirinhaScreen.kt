@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.carterinhadigitalLucasRodrigues.R
+import com.aula.carteirinhaprofessor.R
 import com.aula.carteirinhaprofessor.feature.aluno.carteirinha.presentation.component.PerfilAluno
 import com.aula.carteirinhaprofessor.feature.aluno.carteirinha.presentation.component.QrCode
 import com.aula.carteirinhaprofessor.feature.login.domain.model.UsuarioLogado
@@ -45,7 +45,7 @@ fun CarteirinhaScreen(
                 curso = usuarioLogado.curso
             )
             Image(
-                painter = painterResource(id = R.drawable.logo),
+                painter = painterResource(id = R.drawable.senai),
                 contentDescription = "Logo Senai",
                 modifier = Modifier
                     .fillMaxWidth(0.55f)

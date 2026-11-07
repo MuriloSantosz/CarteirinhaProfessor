@@ -37,7 +37,7 @@ fun HomeAlunoScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Olá, Lucas Rodrigues",
+            text = "Bem-Vindo, Murilo",
             style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.Bold
         )
@@ -103,10 +103,10 @@ private fun HomeAlunoScreenPreview() {
         HomeAlunoScreen(
             usuarioLogado = UsuarioLogado(
                 id = "1",
-                nome = "Lucas Rodrigues",
+                nome = "Murilo Santos",
                 matricula = "2026000001",
                 perfil = PerfilAcesso.ALUNO,
-                curso = "Desenvolvimento de Sistemas",
+                curso = "Devest",
                 turma = "2DEVEST-B",
                 token = "token"
             ),

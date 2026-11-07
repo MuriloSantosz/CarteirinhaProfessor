@@ -1,13 +1,12 @@
 package com.aula.carteirinhaprofessor.core.network
 
-import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.aula.carteirinhaprofessor.core.auth.SessionTokenStore
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
 class NetworkClient(
     private val baseUrl: String,

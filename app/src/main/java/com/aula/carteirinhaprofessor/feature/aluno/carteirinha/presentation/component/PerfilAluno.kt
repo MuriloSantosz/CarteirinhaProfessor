@@ -14,14 +14,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.carterinhadigitalLucasRodrigues.R
+import com.aula.carteirinhaprofessor.R
 
 @Composable
 fun PerfilAluno(
     nome: String,
     matricula: String,
     curso: String,
-    idFoto: Int = R.drawable.perfillucas
+    idFoto: Int = R.drawable.sagui2
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -29,7 +29,7 @@ fun PerfilAluno(
     ) {
         Image(
             painter = painterResource(id = idFoto),
-            contentDescription = "Foto do aluno",
+            contentDescription = "Foto",
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(130.dp)
