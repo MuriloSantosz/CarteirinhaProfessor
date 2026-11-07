@@ -80,7 +80,7 @@ fun AppShell(
                         contentDescription = "foto de perfil",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
-                            .size(96.dp)
+                            .size(92.dp)
                             .clip(CircleShape)
                             .border(
                                 width = 2.dp,

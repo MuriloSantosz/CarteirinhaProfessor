@@ -33,11 +33,11 @@ class FakeAuthRepository : LoginRepository {
                 Result.success(
                     UsuarioLogado(
                         id = "1",
-                        nome = "Evilyn Azevedo",
-                        matricula = "2026000001",
+                        nome = "Murilo Santos",
+                        matricula = "7635281761",
                         perfil = PerfilAcesso.ALUNO,
-                        curso = "Desenvolvimento de Sistemas",
-                        turma = "2DEVEST-A",
+                        curso = "Devest",
+                        turma = "2DEVEST-B",
                         token = "token-fake-aluno"
                     )
                 )
@@ -51,8 +51,8 @@ class FakeAuthRepository : LoginRepository {
                 Result.success(
                     UsuarioLogado(
                         id = "2",
-                        nome = "Professor Modelo",
-                        matricula = "PROF20260001",
+                        nome = "Professor Robson",
+                        matricula = "P123456789",
                         perfil = PerfilAcesso.PROFESSOR,
                         curso = "",
                         turma = "",

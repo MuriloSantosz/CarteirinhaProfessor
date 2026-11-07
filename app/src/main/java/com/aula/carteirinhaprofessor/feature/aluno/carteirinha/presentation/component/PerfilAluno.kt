@@ -42,7 +42,7 @@ fun PerfilAluno(
         )
 
         InfoAluno(
-            label = "Nome do usuário",
+            label = "Usuário",
             value = nome
         )
 

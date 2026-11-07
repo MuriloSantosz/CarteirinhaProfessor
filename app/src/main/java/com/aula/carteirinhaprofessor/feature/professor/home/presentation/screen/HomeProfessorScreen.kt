@@ -1,10 +1,14 @@
 package com.aula.carteirinhaprofessor.feature.professor.home.presentation.screen
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -13,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,79 +33,32 @@ fun HomeProfessorScreen(
     onUnidadesCurricularesClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(24.dp)
-    ) {
-        Text(
-            text = "Olá, Professor Calabreso",
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold
-        )
-
-        NavigationButton(
-            text = "Minhas Turmas",
-            onClick = onTurmasClick,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        NavigationButton(
-            text = "Unidades Curriculares",
-            onClick = onUnidadesCurricularesClick,
-            modifier = Modifier.fillMaxWidth()
-        )
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            border = BorderStroke(1.5.dp, MaterialTheme.colorScheme.primary),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface
-            ),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    Box(modifier = Modifier.fillMaxSize().background(Color.Gray))
+    {
+        Spacer(modifier = Modifier.height(55.dp))
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(24.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            Column(
-                modifier = Modifier.padding(20.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Text(
-                    text = "Professor Calabreso",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
-                )
+            Text(
+                text = "Bem-Vindo, Professor Robson",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(55.dp))
 
-                Text(
-                    text = "Matrícula: ${usuarioLogado.matricula}",
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+            NavigationButton(
+                text = "Turmas", onClick = onTurmasClick, modifier = Modifier.fillMaxWidth()
+            )
 
-                Text(
-                    text = "Acesse suas turmas e unidades curriculares.",
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+            NavigationButton(
+                text = "Unidades Curriculares",
+                onClick = onUnidadesCurricularesClick,
+                modifier = Modifier.fillMaxWidth()
+            )
+
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun HomeProfessorPreview() {
-    CarteirinhaDigital2DEVESTTheme {
-        HomeProfessorScreen(
-            usuarioLogado = UsuarioLogado(
-                id = "2",
-                nome = "Professor calabreso",
-                matricula = "PROF20260002",
-                perfil = PerfilAcesso.PROFESSOR,
-                curso = "",
-                turma = "",
-                token = "token"
-            ),
-            onTurmasClick = {},
-            onUnidadesCurricularesClick = {}
-        )
     }
 }

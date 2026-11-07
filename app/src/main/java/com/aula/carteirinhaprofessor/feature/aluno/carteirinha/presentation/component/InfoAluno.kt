@@ -14,7 +14,7 @@ fun InfoAluno(
     modifier: Modifier = Modifier,
     label: String,
     value: String,
-    fontSizeValue: TextUnit = 22.sp,
+    fontSizeValue: TextUnit = 20.sp,
     fontWeightValue: FontWeight = FontWeight.Medium
 ) {
     Column(

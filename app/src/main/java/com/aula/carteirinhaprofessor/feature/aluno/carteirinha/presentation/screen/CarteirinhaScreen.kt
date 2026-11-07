@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -29,28 +30,20 @@ fun CarteirinhaScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(Color.Gray)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(vertical = 24.dp, horizontal = 20.dp)
+                .padding(vertical = 22.dp, horizontal = 20.dp)
         ) {
 
             PerfilAluno(
-                nome = "Lucas Rodrigues",
+                nome = "Murilo Santos",
                 matricula = usuarioLogado.matricula,
                 curso = usuarioLogado.curso
-            )
-            Image(
-                painter = painterResource(id = R.drawable.senai),
-                contentDescription = "Logo Senai",
-                modifier = Modifier
-                    .fillMaxWidth(0.55f)
-                    .height(48.dp),
-                contentScale = ContentScale.Fit
             )
 
             QrCode(

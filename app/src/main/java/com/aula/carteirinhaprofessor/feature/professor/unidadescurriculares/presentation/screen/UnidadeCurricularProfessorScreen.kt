@@ -1,5 +1,6 @@
 package com.aula.carteirinhaprofessor.feature.professor.unidadescurriculares.presentation.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -40,7 +42,7 @@ fun UnidadeCurricularProfessorScreen(
     when {
         uiState.isLoading -> {
             Box(
-                modifier = modifier.fillMaxSize(),
+                modifier = modifier.fillMaxSize().background(Color.Gray),
                 contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
@@ -84,24 +86,13 @@ fun UnidadeCurricularProfessorScreen(
         }
 
         else -> {
+            Box(modifier = Modifier.fillMaxSize().background(Color.Gray))
             LazyColumn(
                 modifier = modifier
                     .fillMaxSize()
                     .padding(horizontal = 16.dp, vertical = 12.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                item {
-                    Text(
-                        text = "Unidades Curriculares",
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
-                    )
-                }
 
                 items(
                     items = uiState.unidades,

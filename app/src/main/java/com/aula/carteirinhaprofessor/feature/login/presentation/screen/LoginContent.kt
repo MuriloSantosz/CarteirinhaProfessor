@@ -1,6 +1,7 @@
 package com.aula.carteirinhaprofessor.feature.login.presentation.screen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.carterinhadigitalLucasRodrigues.R
+import com.aula.carteirinhaprofessor.R
 import com.aula.carteirinhaprofessor.core.designsystem.theme.CarteirinhaDigital2DEVESTTheme
 import com.aula.carteirinhaprofessor.feature.login.presentation.LoginEvent
 import com.aula.carteirinhaprofessor.feature.login.presentation.LoginUiState
@@ -42,21 +43,13 @@ fun LoginContent(
             16.dp,
             Alignment.CenterVertically
         ),
-        modifier = modifier
+        modifier = modifier.background(Color.Gray)
     ) {
         Text(
             text = "Login",
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary
-        )
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Logo Senai",
-            modifier = Modifier
-                .fillMaxWidth(0.55f)
-                .height(48.dp),
-            contentScale = ContentScale.Fit
         )
         OutlinedTextField(
             value = uiState.usuario,
@@ -65,7 +58,7 @@ fun LoginContent(
             },
             isError = uiState.credentialError,
             label = { Text(text = "Usuário...") },
-            modifier = Modifier.fillMaxWidth(0.85f)
+            modifier = Modifier.fillMaxWidth(0.60f)
         )
 
         OutlinedTextField(
@@ -76,7 +69,7 @@ fun LoginContent(
             isError = uiState.credentialError,
             label = { Text(text = "Senha...") },
             visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier.fillMaxWidth(0.85f)
+            modifier = Modifier.fillMaxWidth(0.60f)
         )
 
         uiState.errorMessage?.let { error ->
@@ -84,7 +77,7 @@ fun LoginContent(
                 text = error,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.fillMaxWidth(0.85f)
+                modifier = Modifier.fillMaxWidth(0.60f)
             )
         }
 
@@ -99,7 +92,7 @@ fun LoginContent(
                 contentColor = MaterialTheme.colorScheme.onPrimary
             ),
             modifier = Modifier
-                .fillMaxWidth(0.85f)
+                .fillMaxWidth(0.65f)
                 .height(50.dp)
         ) {
             if (uiState.isLoading) {

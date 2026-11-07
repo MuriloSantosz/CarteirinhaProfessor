@@ -50,7 +50,7 @@ fun NavGraphBuilder.alunoNavGraph(
             ) { usuario ->
 
                 AppShell(
-                    title = "Início",
+                    title = "",
                     usuarioLogado = usuario,
                     canNavigateBack = false,
                     darkTheme = darkTheme,

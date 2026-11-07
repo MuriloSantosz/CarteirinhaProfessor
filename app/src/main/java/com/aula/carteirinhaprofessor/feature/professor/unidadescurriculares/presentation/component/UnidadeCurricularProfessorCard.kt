@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,7 +28,7 @@ fun UnidadeCurricularProfessorCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        border = BorderStroke(1.5.dp, MaterialTheme.colorScheme.primary),
+        border = BorderStroke(1.5.dp, Color.Black),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
@@ -40,65 +41,28 @@ fun UnidadeCurricularProfessorCard(
             Text(
                 text = unidadeCurricular.nome,
                 fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
             )
 
             Text(
                 text = "Turma: ${unidadeCurricular.turma}",
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onSurface
             )
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = "Carga Horária: ${unidadeCurricular.cargaHoraria}h",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Text(
-                    text = "Aulas: ${unidadeCurricular.aulasRealizadas}/${unidadeCurricular.quantidadeAulas}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
+            Text(
+                text = "Carga Horária: ${unidadeCurricular.cargaHoraria}h",
+            )
+            Text(
+                text = "Aulas: ${unidadeCurricular.aulasRealizadas}/${unidadeCurricular.quantidadeAulas}",
+            )
+
 
             val dias = unidadeCurricular.diasSemana.joinToString(", ")
             Text(
                 text = "Dias: $dias",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Text(
                 text = "Horário: ${unidadeCurricular.horarioInicio} - ${unidadeCurricular.horarioFim}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun UnidadeCurricularProfessorCardPreview() {
-    UnidadeCurricularProfessorCard(
-        unidadeCurricular = UnidadeCurricularProfessor(
-            id = "10",
-            nome = "Programação para Dispositivos Móveis",
-            turmaId = "1",
-            turma = "2DEVEST-B",
-            cargaHoraria = 25,
-            quantidadeAulas = 30,
-            aulasRealizadas = 40,
-            diasSemana = listOf("SEGUNDA", "SEXTA"),
-            horarioInicio = "14:00",
-            horarioFim = "20:30"
-        )
-    )
 }

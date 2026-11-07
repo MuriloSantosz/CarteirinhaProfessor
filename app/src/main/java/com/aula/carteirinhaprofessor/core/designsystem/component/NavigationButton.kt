@@ -1,6 +1,7 @@
 package com.aula.carteirinhaprofessor.core.designsystem.component
 
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -19,9 +20,9 @@ fun NavigationButton(
     modifier: Modifier = Modifier
 ) {
     Button(
-        modifier = modifier.height(52.dp),
+        modifier = modifier.height(35.dp).width(45.dp,),
         onClick = onClick,
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(5.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary
@@ -29,7 +30,7 @@ fun NavigationButton(
     ) {
         Text(
             text = text,
-            fontSize = 16.sp,
+            fontSize = 17.sp,
             fontWeight = FontWeight.Bold
         )
     }

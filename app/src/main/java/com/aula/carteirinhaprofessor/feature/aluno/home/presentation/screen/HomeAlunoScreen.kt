@@ -1,10 +1,13 @@
 package com.aula.carteirinhaprofessor.feature.aluno.home.presentation.screen
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -14,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,10 +33,11 @@ fun HomeAlunoScreen(
     onUnidadesCurricularesClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    Spacer(modifier = Modifier.height(55.dp))
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(24.dp),
+            .background(Color.Gray),
         verticalArrangement = Arrangement.spacedBy(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -42,40 +47,13 @@ fun HomeAlunoScreen(
             fontWeight = FontWeight.Bold
         )
 
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            border = BorderStroke(1.5.dp, MaterialTheme.colorScheme.primary),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface
-            ),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-        ) {
-            Column(
-                modifier = Modifier.padding(20.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Text(
-                    text = usuarioLogado.curso,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
-                )
 
-                Text(
-                    text = "Turma: 2DEVEST-B",
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-
-                Text(
-                    text = "Matrícula: ${usuarioLogado.matricula}",
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
-        }
+        Spacer(modifier = Modifier.height(55.dp))
 
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             NavigationButton(
@@ -83,6 +61,7 @@ fun HomeAlunoScreen(
                 onClick = onCarteirinhaClick,
                 modifier = Modifier.fillMaxWidth()
             )
+            Spacer(modifier = Modifier.height(5.dp))
 
             NavigationButton(
                 text = "Unidades Curriculares",
@@ -93,25 +72,4 @@ fun HomeAlunoScreen(
     }
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
-@Composable
-private fun HomeAlunoScreenPreview() {
-    CarteirinhaDigital2DEVESTTheme {
-        HomeAlunoScreen(
-            usuarioLogado = UsuarioLogado(
-                id = "1",
-                nome = "Murilo Santos",
-                matricula = "2026000001",
-                perfil = PerfilAcesso.ALUNO,
-                curso = "Devest",
-                turma = "2DEVEST-B",
-                token = "token"
-            ),
-            onCarteirinhaClick = {},
-            onUnidadesCurricularesClick = {}
-        )
-    }
-}
+

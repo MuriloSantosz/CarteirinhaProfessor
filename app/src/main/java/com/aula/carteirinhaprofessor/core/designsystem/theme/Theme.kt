@@ -10,11 +10,11 @@ import androidx.compose.ui.graphics.Color
 private val darkScheme = darkColorScheme(
     primary = RedPrimary,
     onPrimary = Color.White,
-    primaryContainer = Color(0xFF2B0003),
+    primaryContainer = Color(0xFFA68385),
     onPrimaryContainer = Color.White,
     secondary = RedPrimary,
     onSecondary = Color.White,
-    secondaryContainer = Color(0xFF2B0003),
+    secondaryContainer = Color(0xFFBD545B),
     onSecondaryContainer = Color.White,
     tertiary = RedPrimary,
     onTertiary = Color.White,

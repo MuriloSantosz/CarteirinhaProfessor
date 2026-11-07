@@ -1,5 +1,6 @@
 package com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,13 +18,16 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.UnidadeCurricularViewModel
 import com.aula.carteirinhaprofessor.feature.aluno.unidadescurriculares.presentation.component.UnidadeCurricularCard
+
 
 @Composable
 fun UnidadeCurricularScreen(
@@ -51,7 +55,7 @@ fun UnidadeCurricularScreen(
             Column(
                 modifier = modifier
                     .fillMaxSize()
-                    .padding(24.dp),
+                    .padding(22.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -60,12 +64,12 @@ fun UnidadeCurricularScreen(
                     color = MaterialTheme.colorScheme.error
                 )
                 Button(
-                    modifier = Modifier.padding(top = 16.dp),
+                    modifier = Modifier.padding(top = 10.dp),
                     onClick = {
                         viewModel.carregar()
                     }
                 ) {
-                    Text("Tentar novamente")
+                    Text("Tentar denovo")
                 }
             }
         }
@@ -76,31 +80,21 @@ fun UnidadeCurricularScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Nenhuma unidade curricular encontrada.",
+                    text = "Unidades curriculares não encontradas.",
                     color = MaterialTheme.colorScheme.onBackground
                 )
             }
         }
 
         else -> {
+            Box(modifier = Modifier.background(Color.Gray))
+            {
             LazyColumn(
                 modifier = modifier
                     .fillMaxSize()
                     .padding(horizontal = 16.dp, vertical = 12.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                item {
-                    Text(
-                        text = "Minhas Aulas",
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
-                    )
-                }
 
                 items(
                     items = uiState.unidades,
@@ -114,3 +108,4 @@ fun UnidadeCurricularScreen(
         }
     }
 }
+    }
